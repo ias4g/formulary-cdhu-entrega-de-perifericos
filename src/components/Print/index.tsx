@@ -1,9 +1,10 @@
+import { PrinterIcon } from 'lucide-react'
 import { useRef } from "react"
 import { useReactToPrint } from "react-to-print"
-import { ComponenteImpressao } from "../impressao"
+
 import { FormDataProps } from "../Form"
+import { ComponenteImpressao } from "../impressao"
 import { Button } from "../ui/button"
-import { PrinterIcon } from 'lucide-react'
 
 export function PrintPage(data: FormDataProps) {
   const componenteImpressaoRef = useRef<HTMLDivElement>(null)
