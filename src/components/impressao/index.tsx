@@ -1,17 +1,19 @@
-import { forwardRef } from "react";
-import { FormDataProps } from "../Form";
-import { Label } from "../ui/label";
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { forwardRef } from "react";
+
+import logocdhu from '../../assets/logo.svg'
+import { FormDataProps } from "../Form";
+import { Label } from "../ui/label";
 
 export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((data, ref) => {
   const date = new Date()
-  const dataFormat = format(date, "dd 'de' MMMM 'de' yyyy 'às' HH:mm", { locale: ptBR })
+  const dataFormat = format(date, "dd 'de' MMMM 'de' yyyy 'às' HH'h' 'e' mm'min'", { locale: ptBR })
 
   return (
     <div ref={ref} className="max-w-2xl h-[270mm] mt-12 mx-auto px-6 pt-6 pb-1 space-y-12 flex flex-col items-center border-double border-4 border-black">
       <header className="w-full flex flex-col mb-2 items-center space-y-4">
-        <img src="https://inscricoes.pro.br/wp-content/uploads/cdhu-610x241.jpg" width={128} alt="" />
+        <img src={logocdhu} alt="logo da CDHU" />
         <div className="w-full flex flex-col items-center justify-center space-y-2">
           <h1 className="text-xl uppercase font-bold">FORMULÁRIO DE CONTROLE DE PATRIMÔNIO</h1>
           <p className="uppercase  text-xs text-foreground">
@@ -70,7 +72,7 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
 
           <div className="w-full">
             <Label className="uppercase">DESCRIÇÃO DO MODELO</Label>
-            <p className="lowercase">{data.description}</p>
+            <p className="capitalize">{data.description}</p>
           </div>
 
           <div className="flex items-center justify-between w-full">
@@ -99,18 +101,18 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
             {
               !data.hasAccessoryMessage && !data.hasItensMessage && !data.damageMessage ? (
                 <div>
-                  <p className="italic capitalize text-zinc-400">nenhuma observação...</p>
+                  <p className="italic capitalize text-zinc-400">Nenhuma observação...</p>
                 </div>
               ) : (
                 <div className="space-y-1">
                   {
-                    data.hasAccessoryMessage && <p className="italic lowercase"><strong>*Acessórios:</strong> {data.hasAccessoryMessage}</p>
+                    data.hasAccessoryMessage && <p className="italic"><strong>*Acessórios:</strong> {data.hasAccessoryMessage}</p>
                   }
                   {
-                    data.hasItensMessage && <p className="italic lowercase"><strong>*Itens faltantes:</strong> {data.hasItensMessage}</p>
+                    data.hasItensMessage && <p className="italic"><strong>*Itens faltantes:</strong> {data.hasItensMessage}</p>
                   }
                   {
-                    data.damageMessage && <p className="italic lowercase"><strong>*danos:</strong> {data.damageMessage}</p>
+                    data.damageMessage && <p className="italic"><strong>*Danos:</strong> {data.damageMessage}</p>
                   }
                 </div>
               )
@@ -121,8 +123,8 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
           <div className="w-full flex flex-col items-center justify-between">
             <span className="w-full h-px bg-black mb-3" />
             <div className="w-full flex items-center justify-between">
-              <p className="uppercase text-xs">Gerado em <span className="">{dataFormat}</span></p>
-              <p className="uppercase text-xs">ticket glpi - <span className="">{data.ticketGlpi}</span></p>
+              <p className="uppercase text-xs">Gerado em <span className="font-bold">{dataFormat}</span></p>
+              <p className="uppercase text-xs">ticket glpi - <span className="font-bold">{data.ticketGlpi}</span></p>
             </div>
           </div>
         </div>
