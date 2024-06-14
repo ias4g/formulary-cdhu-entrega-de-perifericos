@@ -1,10 +1,12 @@
+import { ArrowRightIcon } from 'lucide-react'
 import { FormEvent, useState } from "react";
-import { Label } from "../ui/label";
+
+import logocdhu from '../../assets/logo.svg'
+import { Button } from "../ui/button";
 import { Input } from "../ui/input";
+import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Textarea } from "../ui/textarea";
-import { Button } from "../ui/button";
-import { ArrowRightIcon } from 'lucide-react'
 
 export interface FormDataProps {
     employeeName: string
@@ -88,7 +90,7 @@ export function Form({ onSubmit }: Props) {
     return (
         <div className="max-w-2xl mx-auto mt-4 p-6 space-y-12 flex flex-col items-center border-double border-4 border-black">
             <header className="w-full flex flex-col mb-2 items-center space-y-4">
-                <img src="https://inscricoes.pro.br/wp-content/uploads/cdhu-610x241.jpg" width={256} alt="" />
+                <img src={logocdhu} alt="logo da CDHU" />
                 <div className="w-full flex flex-col items-center justify-center space-y-2">
                     <h1 className="text-xl uppercase font-bold">FORMULÁRIO DE CONTROLE DE PATRIMÔNIO</h1>
                     <p className="uppercase text-xs text-foreground">2.11.04.00 – GER DE GESTÃO ESTRATEGICA DE DADOS E ENG PROC</p>
