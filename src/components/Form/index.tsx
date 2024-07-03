@@ -2,6 +2,7 @@ import { ArrowRightIcon } from 'lucide-react'
 import { FormEvent, useState } from "react";
 
 import logocdhu from '../../assets/logo.svg'
+import { SelectComponnent } from '../selectComponent';
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Label } from "../ui/label";
@@ -35,24 +36,27 @@ interface Props {
 }
 
 export function Form({ onSubmit }: Props) {
+    let array = Array.from({ length: 16 }, (_, index) => index + 1);
+    let numerosComoString = array.map(num => num.toString() + 'º ANDAR');
+
     const [delivery, setDelivery] = useState('')
     const [ticketGlpi, setTicketGlpi] = useState(0)
 
     const [employeeName, setEmployeeName] = useState('');
     const [managerName, setManagerName] = useState('');
     const [costCenter, setCostCenter] = useState('');
-    const [location, setLocation] = useState('');
-    const [floor, setFloor] = useState('');
-    const [complement, setComplement] = useState('');
+    const [location, setLocation] = useState('SELECIONE');
+    const [floor, setFloor] = useState('SELECIONE');
+    const [complement, setComplement] = useState('SELECIONE');
     const [assetType, setAssetType] = useState('');
     const [assetBP, setAssetBP] = useState('');
     const [assetBrand, setAssetBrand] = useState('');
     const [description, setDescription] = useState('');
 
-    const [hasAccessory, setHasAccessory] = useState('Não')
-    const [status, setStatus] = useState('Entregue')
-    const [hasItens, setHasItens] = useState('Não')
-    const [damage, setDamage] = useState('Não')
+    const [hasAccessory, setHasAccessory] = useState('NÃO')
+    const [status, setStatus] = useState('ENTREGUE')
+    const [hasItens, setHasItens] = useState('NÃO')
+    const [damage, setDamage] = useState('NÃO')
 
     const [hasAccessoryMessage, setHasAccessoryMessage] = useState('')
     const [hasItensMessage, setHasItensMessage] = useState('')
@@ -60,9 +64,11 @@ export function Form({ onSubmit }: Props) {
 
     function handleResult(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        console.log(hasAccessory)
-        console.log(hasItens)
-        console.log(damage)
+
+        if (location === 'SELECIONE' || floor === 'SELECIONE' || complement === 'SELECIONE') {
+            alert('Os campos LOCALIDADE, ANDAR E COMPLEMENTO, são obrigatorios.')
+            return
+        }
 
         onSubmit({
             employeeName,
@@ -101,7 +107,7 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase">Quem vai entregar o produto?</Label>
                         <Input
-                            placeholder="Ex: João Da Silva"
+                            placeholder="NEIL ARMSTRONG"
                             value={delivery}
                             onChange={(e) => setDelivery(e.target.value)}
                             required
@@ -111,7 +117,7 @@ export function Form({ onSubmit }: Props) {
                         <Label className="uppercase">Número do ticket glpi</Label>
                         <Input
                             type="number"
-                            placeholder="Ex: 123456"
+                            placeholder="123456"
                             onChange={(e) => setTicketGlpi(Number(e.target.value))}
                             required
                         />
@@ -122,7 +128,7 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase">Nome do colaborador</Label>
                         <Input
-                            placeholder="Ex: Jãoo Da Silva"
+                            placeholder="ALBERT EINSTEIN"
                             value={employeeName}
                             onChange={(e) => setEmployeeName(e.target.value)}
                             required
@@ -131,7 +137,7 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase">Nome do gestor</Label>
                         <Input
-                            placeholder="Ex: Maria Da Silva"
+                            placeholder="BEETHOVEN"
                             value={managerName}
                             onChange={(e) => setManagerName(e.target.value)}
                             required
@@ -142,7 +148,7 @@ export function Form({ onSubmit }: Props) {
                 <div className="w-full space-y-1">
                     <Label className="uppercase">Centro de custo</Label>
                     <Input
-                        placeholder="Ex: 2.11.02.00 - GER DE SERVICE DESK, INFRAESTR E SEG DA INFORMACAO"
+                        placeholder="2.11.02.00 - GER DE SERVICE DESK, INFRAESTR E SEG DA INFORMACAO"
                         value={costCenter}
                         onChange={(e) => setCostCenter(e.target.value)}
                         required
@@ -151,41 +157,33 @@ export function Form({ onSubmit }: Props) {
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 w-full">
-                    <div className="space-y-1">
-                        <Label className="uppercase">Localidade</Label>
-                        <Input
-                            placeholder="Ex: Sede"
-                            value={location}
-                            onChange={(e) => setLocation(e.target.value)}
-                            required
-                        />
-                    </div>
-                    <div className="space-y-1">
-                        <Label className="uppercase">Andar</Label>
-                        <Input
-                            placeholder="Ex: 11B1"
-                            value={floor}
-                            onChange={(e) => setFloor(e.target.value)}
-                            required
-                        />
-                    </div>
+                    <SelectComponnent
+                        children='localidade'
+                        options={['Sede', 'Cidade IV', 'XV de Novembro', 'Santos', 'Araraquara', 'Araçatuba', 'Campinas', 'Presidente Prudente', 'Ribeirão Preto', 'Santo André', 'São José do Rio Preto', 'Sorocaba', 'São José dos Campos']}
+                        placeholder={location}
+                        getFunction={setLocation}
+                    />
 
-                    <div className="space-y-1">
-                        <Label className="uppercase">Complemento</Label>
-                        <Input
-                            placeholder="Ex: Sede"
-                            value={complement}
-                            onChange={(e) => setComplement(e.target.value)}
-                            required
-                        />
-                    </div>
+                    <SelectComponnent
+                        children='Andar'
+                        options={numerosComoString}
+                        placeholder={floor}
+                        getFunction={setFloor}
+                    />
+
+                    <SelectComponnent
+                        children='Complemento'
+                        options={['Bloco 01', 'Bloco 02', 'Bloco 03', 'Bloco 04', 'Bloco 05', 'Bloco 06']}
+                        placeholder={complement}
+                        getFunction={setComplement}
+                    />
                 </div>
 
                 <div className="grid grid-cols-3 gap-4 w-full">
                     <div className="space-y-1">
                         <Label className="uppercase">Tipo do ativo</Label>
                         <Input
-                            placeholder="Ex: WebCam"
+                            placeholder="WEBCAM"
                             value={assetType}
                             onChange={(e) => setAssetType(e.target.value)}
                             required
@@ -194,7 +192,7 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase">bc/sn</Label>
                         <Input
-                            placeholder="Ex: BP23456"
+                            placeholder="BC/BP + 23456"
                             value={assetBP}
                             onChange={(e) => setAssetBP(e.target.value)}
                             required
@@ -204,7 +202,7 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase">Marca do ativo</Label>
                         <Input
-                            placeholder="Ex: HDCAM"
+                            placeholder="HDCAM"
                             value={assetBrand}
                             onChange={(e) => setAssetBrand(e.target.value)}
                             required
@@ -215,7 +213,7 @@ export function Form({ onSubmit }: Props) {
                 <div className="w-full space-y-1">
                     <Label className="uppercase">DESCRIÇÃO DO MODELO</Label>
                     <Input
-                        placeholder="Ex: Webcam 720p"
+                        placeholder="WEBCAM 720P"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         required
@@ -227,12 +225,12 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase text-[0.7rem]">Acessórios?</Label>
                         <Select onValueChange={(e) => setHasAccessory(e)}>
-                            <SelectTrigger>
+                            <SelectTrigger className='text-[0.7rem]'>
                                 <SelectValue placeholder={hasAccessory} />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="Sim">Sim</SelectItem>
-                                <SelectItem value="Não">Não</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="SIM">SIM</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="NÃO">NÃO</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -240,12 +238,12 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase text-[0.7rem]">Status do ativo</Label>
                         <Select onValueChange={setStatus}>
-                            <SelectTrigger>
+                            <SelectTrigger className='text-[0.7rem]'>
                                 <SelectValue placeholder={status} />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="Entregue">Entregue</SelectItem>
-                                <SelectItem value="Não Entregue">Não Entregue</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="ENTREGUE">ENTREGUE</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="NÃO ENTREGUE">NÃO ENTREGUE</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -253,12 +251,12 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase text-[0.7rem]">Faltou algum item?</Label>
                         <Select onValueChange={(value) => setHasItens(value)}>
-                            <SelectTrigger className="">
+                            <SelectTrigger className='text-[0.7rem]'>
                                 <SelectValue placeholder={hasItens} />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="Sim">Sim</SelectItem>
-                                <SelectItem value="Não">Não</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="SIM">SIM</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="NÃO">NÃO</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
@@ -266,41 +264,41 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase text-[0.7rem]">Item com danos?</Label>
                         <Select onValueChange={(value) => setDamage(value)}>
-                            <SelectTrigger>
+                            <SelectTrigger className='text-[0.7rem]'>
                                 <SelectValue placeholder={damage} />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem value="Sim">Sim</SelectItem>
-                                <SelectItem value="Não">Não</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="SIM">SIM</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="NÃO">NÃO</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
                 </div>
 
                 {
-                    hasAccessory === 'Sim' &&
+                    hasAccessory === 'SIM' &&
                     <Textarea
+                        required
                         onChange={(e) => setHasAccessoryMessage(e.target.value)}
                         placeholder="Quais acessórios foram juntos com o item?"
-                    // maxLength={55}
                     />
                 }
 
                 {
-                    hasItens === 'Sim' &&
+                    hasItens === 'SIM' &&
                     <Textarea
+                        required
                         onChange={(e) => setHasItensMessage(e.target.value)}
                         placeholder="Quais itens faltaram?"
-                    // maxLength={55}
                     />
                 }
 
                 {
-                    damage == 'Sim' &&
+                    damage == 'SIM' &&
                     <Textarea
+                        required
                         onChange={(e) => setDamageMessage(e.target.value)}
                         placeholder="Quais itens estão com danos?"
-                    // maxLength={55}
                     />
                 }
 
