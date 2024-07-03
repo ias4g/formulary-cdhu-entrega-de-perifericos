@@ -22,97 +22,96 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
         </div>
       </header>
       <div className="w-full h-full flex flex-col justify-between">
-        <div className="w-full space-y-4">
+        <div className="w-full space-y-6">
           <div className="flex justify-between items-center w-full">
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start space-y-1">
               <Label className="uppercase ">Nome do colaborador</Label>
-              <p className="capitalize">{data.employeeName}</p>
+              <p className="uppercase">{data.employeeName}</p>
             </div>
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-end space-y-1">
               <Label className="uppercase ">Nome do gestor</Label>
-              <p className="capitalize">{data.managerName}</p>
+              <p className="uppercase">{data.managerName}</p>
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="w-full space-y-1">
             <Label className="uppercase ">Centro de custo</Label>
-            <p className="lowercase">{data.costCenter}</p>
+            <p className="uppercase">{data.costCenter}</p>
           </div>
 
           <div className="w-full flex items-center justify-between">
-            <div className="flex flex-col items-start justify-center">
-              <Label className="uppercase ">Localidade</Label>
-              <p className="capitalize">{data.location}</p>
+            <div className="flex flex-col items-start justify-center space-y-1">
+              <Label className="uppercase">Localidade</Label>
+              <p className="uppercase">{data.location}</p>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center space-y-1">
               <Label className="uppercase ">Andar</Label>
               <p className="uppercase">{data.floor}</p>
             </div>
-
-            <div className="flex flex-col items-end justify-center">
+            <div className="flex flex-col items-end justify-center space-y-1">
               <Label className="uppercase ">Complemento</Label>
-              <p className="capitalize">{data.complement}</p>
+              <p className="uppercase">
+                {data.complement}
+              </p>
             </div>
           </div>
 
           <div className="w-full flex items-center justify-between">
-            <div className="flex flex-col items-start justify-center">
+            <div className="flex flex-col items-start justify-center space-y-1">
               <Label className="uppercase ">Tipo do ativo</Label>
-              <p className="capitalize">{data.assetType}</p>
+              <p className="uppercase">{data.assetType}</p>
             </div>
-            <div className="flex flex-col items-center justify-center">
+            <div className="flex flex-col items-center justify-center space-y-1">
               <Label className="uppercase ">bc/sn</Label>
               <p className="uppercase">{data.assetBP}</p>
             </div>
-            <div className="flex flex-col items-end justify-center">
+            <div className="flex flex-col items-end justify-center space-y-1">
               <Label className="uppercase ">Marca do ativo</Label>
-              <p className="capitalize">{data.assetBrand}</p>
+              <p className="uppercase">{data.assetBrand}</p>
             </div>
           </div>
 
-          <div className="w-full">
+          <div className="w-full space-y-1">
             <Label className="uppercase">DESCRIÇÃO DO MODELO</Label>
-            <p className="capitalize">{data.description}</p>
+            <p className="uppercase">{data.description}</p>
           </div>
 
           <div className="flex items-center justify-between w-full">
-            <div className="flex flex-col items-start">
+            <div className="flex flex-col items-start space-y-1">
               <Label className="uppercase ">Acessórios?</Label>
-              <p className="capitalize">{data.hasAccessory}</p>
+              <p className="uppercase">{data.hasAccessory}</p>
             </div>
-
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center space-y-1">
               <Label className="uppercase ">Status</Label>
-              <p className="capitalize">{data.status}</p>
+              <p className="uppercase">{data.status}</p>
             </div>
-
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center space-y-1">
               <Label className="uppercase ">Faltou itens?</Label>
-              <p className="capitalize">{data.hasItens}</p>
+              <p className="uppercase">{data.hasItens}</p>
             </div>
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-end space-y-1">
               <Label className="uppercase ">danos?</Label>
-              <p className="capitalize">{data.damage}</p>
+              <p className="uppercase">{data.damage}</p>
             </div>
           </div>
 
-          <div className="flex flex-col py-2">
+          <div className="flex flex-col py-2 space-y-1">
             <h2 className="uppercase">Observações:</h2>
             {
               !data.hasAccessoryMessage && !data.hasItensMessage && !data.damageMessage ? (
                 <div>
-                  <p className="italic capitalize text-zinc-400">Nenhuma observação...</p>
+                  <p className="italic uppercase text-zinc-400 text-xs">Nenhuma observação...</p>
                 </div>
               ) : (
                 <div className="space-y-1">
                   {
-                    data.hasAccessoryMessage && <p className="italic"><strong>*Acessórios:</strong> {data.hasAccessoryMessage}</p>
+                    data.hasAccessoryMessage && <p className="italic text-xs uppercase"><strong>*Acessórios:</strong> {data.hasAccessoryMessage}</p>
                   }
                   {
-                    data.hasItensMessage && <p className="italic"><strong>*Itens faltantes:</strong> {data.hasItensMessage}</p>
+                    data.hasItensMessage && <p className="italic text-xs uppercase"><strong>*Itens faltantes:</strong> {data.hasItensMessage}</p>
                   }
                   {
-                    data.damageMessage && <p className="italic"><strong>*Danos:</strong> {data.damageMessage}</p>
+                    data.damageMessage && <p className="italic text-xs uppercase"><strong>*Danos:</strong> {data.damageMessage}</p>
                   }
                 </div>
               )
@@ -132,12 +131,12 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
           <div className="w-full flex items-center justify-between mb-10">
             <div className="w-48 flex flex-col items-center justify-center">
               <span className="w-full h-px bg-black" />
-              <span className="text-[0.7rem] capitalize">{data.delivery}</span>
+              <span className="text-[0.7rem] uppercase">{data.delivery}</span>
               <span className="text-[0.7rem] uppercase">ggedep</span>
             </div>
             <div className="w-48 flex flex-col items-center justify-center">
               <span className="w-full h-px bg-black" />
-              <span className="text-[0.7rem] capitalize">{data.employeeName}</span>
+              <span className="text-[0.7rem] uppercase">{data.employeeName}</span>
               <span className="text-[0.7rem] uppercase">colaborador</span>
             </div>
           </div>
