@@ -8,7 +8,7 @@ export function App() {
   const [dadosFormulario, setDadosFormulario] = useState<FormDataProps | null>(null)
 
   return (
-    <div className="max-w-2xl my-4 mx-auto px-12 py-7 rounded-xl bg-white">
+    <div className="max-w-2xl my-4 mx-auto px-12 py-7 rounded-xl bg-white shadow-custom-dark">
       {!dadosFormulario ? (
         <Form onSubmit={(data) => setDadosFormulario(data)} />
       ) : (
