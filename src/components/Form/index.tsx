@@ -190,7 +190,7 @@ export function Form({ onSubmit }: Props) {
                         />
                     </div>
                     <div className="space-y-1">
-                        <Label className="uppercase">bc/sn</Label>
+                        <Label className="uppercase">bp/bc</Label>
                         <Input
                             placeholder="BC/BP + 23456"
                             value={assetBP}
@@ -243,7 +243,7 @@ export function Form({ onSubmit }: Props) {
                             </SelectTrigger>
                             <SelectContent>
                                 <SelectItem className='text-[0.7rem]' value="ENTREGUE">ENTREGUE</SelectItem>
-                                <SelectItem className='text-[0.7rem]' value="NÃO ENTREGUE">NÃO ENTREGUE</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="DEVOLUÇÃO">DEVOLUÇÃO</SelectItem>
                             </SelectContent>
                         </Select>
                     </div>
