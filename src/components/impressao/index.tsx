@@ -5,6 +5,7 @@ import { forwardRef } from "react";
 import logocdhu from '../../assets/logo.svg'
 import { FormDataProps } from "../Form";
 import { Label } from "../ui/label";
+import { confiDatas } from 'datas'
 
 export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((data, ref) => {
   const date = new Date()
@@ -17,7 +18,7 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
         <div className="w-full flex flex-col items-center justify-center space-y-2">
           <h1 className="text-xl uppercase font-bold">FORMULÁRIO DE CONTROLE DE PATRIMÔNIO</h1>
           <p className="uppercase  text-xs text-foreground">
-            2.11.04.00 – GER DE GESTÃO ESTRATEGICA DE DADOS E ENG PROC
+            {confiDatas.GER}
           </p>
         </div>
       </header>
@@ -143,7 +144,7 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
           <p className="uppercase text-xs">COMPANHIA DE DESENVOLVIMENTO HABITACIONAL E URBANO</p>
           <span className="w-full h-px bg-black" />
           <p className="uppercase text-[9px] pt-2">Rua Boa Vista, 170 11º Bloco 2 - São Paulo - SP</p>
-          <p className="uppercase text-[9px]">2.11.04.00 – Ger de Gestão Estratégica de Dados e Eng Proc</p>
+          <p className="uppercase text-[9px]">{confiDatas.GER}</p>
         </div>
       </div>
     </div>
