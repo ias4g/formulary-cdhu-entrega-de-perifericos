@@ -193,7 +193,7 @@ export function Form({ onSubmit }: Props) {
                     <div className="space-y-1">
                         <Label className="uppercase">bp/bc</Label>
                         <Input
-                            placeholder="BC/BP + 23456"
+                            placeholder="BP23456"
                             value={assetBP}
                             onChange={(e) => setAssetBP(e.target.value)}
                             required

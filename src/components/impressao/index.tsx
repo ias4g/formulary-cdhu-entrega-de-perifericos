@@ -63,7 +63,7 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
               <p className="uppercase">{data.assetType}</p>
             </div>
             <div className="flex flex-col items-center justify-center space-y-1">
-              <Label className="uppercase ">bc/sn</Label>
+              <Label className="uppercase ">bp/bc</Label>
               <p className="uppercase">{data.assetBP}</p>
             </div>
             <div className="flex flex-col items-end justify-center space-y-1">
