@@ -8,7 +8,7 @@ import { Input } from "../ui/input";
 import { Label } from "../ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { Textarea } from "../ui/textarea";
-import { confiDatas } from 'datas';
+import { configDatas } from '../../../datasUtils'
 
 export interface FormDataProps {
     employeeName: string
@@ -100,7 +100,7 @@ export function Form({ onSubmit }: Props) {
                 <img src={logocdhu} alt="logo da CDHU" />
                 <div className="w-full flex flex-col items-center justify-center space-y-2">
                     <h1 className="text-xl uppercase font-bold">FORMULÁRIO DE CONTROLE DE PATRIMÔNIO</h1>
-                    <p className="uppercase text-xs text-foreground">{confiDatas.GER}</p>
+                    <p className="uppercase text-xs text-foreground">{configDatas.GER}</p>
                 </div>
             </header>
             <form className="space-y-4" onSubmit={handleResult}>
@@ -149,7 +149,7 @@ export function Form({ onSubmit }: Props) {
                 <div className="w-full space-y-1">
                     <Label className="uppercase">Centro de custo</Label>
                     <Input
-                        placeholder={confiDatas.GER}
+                        placeholder={configDatas.GER}
                         value={costCenter}
                         onChange={(e) => setCostCenter(e.target.value)}
                         required
