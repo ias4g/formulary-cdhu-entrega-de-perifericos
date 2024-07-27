@@ -1,7 +1,7 @@
 {
   "name": "cdhu-form-init",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.05",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
