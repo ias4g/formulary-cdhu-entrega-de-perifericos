@@ -2,9 +2,10 @@ import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { forwardRef } from "react";
 
+import { configDatas } from '../../../datasUtils'
+
 import { FormDataProps } from "../Form";
 import { Label } from "../ui/label";
-import { configDatas } from '../../../datasUtils'
 
 export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((data, ref) => {
   const date = new Date()
@@ -40,15 +41,15 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
           </div>
 
           <div className="w-full flex items-center justify-between">
-            <div className="flex flex-col items-start justify-center space-y-1">
+            <div className="flex flex-col items-start justify-center space-y-1 flex-1">
               <Label className="uppercase">Localidade</Label>
               <p className="uppercase">{data.location}</p>
             </div>
-            <div className="flex flex-col items-center justify-center space-y-1">
+            <div className="flex flex-col items-center justify-center space-y-1 flex-1">
               <Label className="uppercase ">Andar</Label>
               <p className="uppercase">{data.floor}</p>
             </div>
-            <div className="flex flex-col items-end justify-center space-y-1">
+            <div className="flex flex-col items-end justify-center space-y-1 flex-1">
               <Label className="uppercase ">Complemento</Label>
               <p className="uppercase">
                 {data.complement}
@@ -57,15 +58,15 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
           </div>
 
           <div className="w-full flex items-center justify-between">
-            <div className="flex flex-col items-start justify-center space-y-1">
-              <Label className="uppercase ">Tipo do ativo</Label>
+            <div className="truncate flex flex-col items-start justify-center space-y-1 flex-1">
+              <Label className="uppercase">Tipo do ativo</Label>
               <p className="uppercase">{data.assetType}</p>
             </div>
-            <div className="flex flex-col items-center justify-center space-y-1">
+            <div className="flex flex-col items-center justify-center space-y-1 flex-1">
               <Label className="uppercase ">bp/bc</Label>
               <p className="uppercase">{data.assetBP}</p>
             </div>
-            <div className="flex flex-col items-end justify-center space-y-1">
+            <div className="flex flex-col items-end justify-center space-y-1 flex-1">
               <Label className="uppercase ">Marca do ativo</Label>
               <p className="uppercase">{data.assetBrand}</p>
             </div>
