@@ -1,7 +1,6 @@
 import { ArrowRightIcon } from 'lucide-react'
 import { FormEvent, useState } from "react";
 
-import logocdhu from '../../assets/logo.svg'
 import { SelectComponnent } from '../selectComponent';
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
@@ -97,7 +96,7 @@ export function Form({ onSubmit }: Props) {
     return (
         <div className="max-w-2xl mx-auto mt-4 p-6 space-y-12 flex flex-col items-center border-double border-4 border-black">
             <header className="w-full flex flex-col mb-2 items-center space-y-4">
-                <img src={logocdhu} alt="logo da CDHU" />
+                <img src={configDatas.LOGO} alt="logo da CDHU" width={200} />
                 <div className="w-full flex flex-col items-center justify-center space-y-2">
                     <h1 className="text-xl uppercase font-bold">FORMULÁRIO DE CONTROLE DE PATRIMÔNIO</h1>
                     <p className="uppercase text-xs text-foreground">{configDatas.GER}</p>

@@ -2,7 +2,6 @@ import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { forwardRef } from "react";
 
-import logocdhu from '../../assets/logo.svg'
 import { FormDataProps } from "../Form";
 import { Label } from "../ui/label";
 import { configDatas } from '../../../datasUtils'
@@ -14,7 +13,7 @@ export const ComponenteImpressao = forwardRef<HTMLDivElement, FormDataProps>((da
   return (
     <div ref={ref} className="max-w-2xl h-[270mm] mt-12 mx-auto px-6 pt-6 pb-1 space-y-12 flex flex-col items-center border-double border-4 border-black">
       <header className="w-full flex flex-col mb-2 items-center space-y-4">
-        <img src={logocdhu} alt="logo da CDHU" />
+        <img src={configDatas.LOGO} alt="logo da CDHU" width={200} />
         <div className="w-full flex flex-col items-center justify-center space-y-2">
           <h1 className="text-xl uppercase font-bold">FORMULÁRIO DE CONTROLE DE PATRIMÔNIO</h1>
           <p className="uppercase  text-xs text-foreground">
