@@ -54,7 +54,7 @@ export function Form({ onSubmit }: Props) {
     const [description, setDescription] = useState('');
 
     const [hasAccessory, setHasAccessory] = useState('NÃO')
-    const [status, setStatus] = useState('ENTREGUE')
+    const [status, setStatus] = useState('ENTREGA')
     const [hasItens, setHasItens] = useState('NÃO')
     const [damage, setDamage] = useState('NÃO')
 
@@ -242,7 +242,7 @@ export function Form({ onSubmit }: Props) {
                                 <SelectValue placeholder={status} />
                             </SelectTrigger>
                             <SelectContent>
-                                <SelectItem className='text-[0.7rem]' value="ENTREGUE">ENTREGUE</SelectItem>
+                                <SelectItem className='text-[0.7rem]' value="ENTREGA">ENTREGA</SelectItem>
                                 <SelectItem className='text-[0.7rem]' value="DEVOLUÇÃO">DEVOLUÇÃO</SelectItem>
                             </SelectContent>
                         </Select>
