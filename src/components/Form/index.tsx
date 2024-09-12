@@ -42,10 +42,6 @@ interface Props {
 }
 
 export function Form({ onSubmit }: Props) {
-  let array = Array.from({ length: 16 }, (_, index) => index + 1)
-  let numerosComoString = array.map((num) => num.toString() + "º ANDAR")
-  numerosComoString.push(...numerosComoString, "Mezanino")
-
   const [delivery, setDelivery] = useState("")
   const [ticketGlpi, setTicketGlpi] = useState(0)
 
@@ -172,43 +168,21 @@ export function Form({ onSubmit }: Props) {
         <div className="grid grid-cols-3 gap-4 w-full">
           <SelectComponnent
             children="localidade"
-            options={[
-              "Sede",
-              "Cidade IV",
-              "XV de Novembro",
-              "Santos",
-              "Araraquara",
-              "Araçatuba",
-              "Campinas",
-              "Presidente Prudente",
-              "Ribeirão Preto",
-              "Santo André",
-              "São José do Rio Preto",
-              "Sorocaba",
-              "São José dos Campos",
-            ]}
+            options={configDatas.LOCALITY}
             placeholder={location}
             getFunction={setLocation}
           />
 
           <SelectComponnent
             children="Andar"
-            options={numerosComoString}
+            options={configDatas.FLOORS}
             placeholder={floor}
             getFunction={setFloor}
           />
 
           <SelectComponnent
             children="Complemento"
-            options={[
-              "Bloco 01",
-              "Bloco 02",
-              "Bloco 03",
-              "Bloco 04",
-              "Bloco 05",
-              "Bloco 06",
-              "Mezanino",
-            ]}
+            options={configDatas.BLOCKS}
             placeholder={complement}
             getFunction={setComplement}
           />
