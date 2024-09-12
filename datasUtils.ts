@@ -1,7 +1,55 @@
 // import logo from './src/assets/cdhu-2024-preto.png'
-import logo from './src/assets/logo-cdhu-150px.png'
+import logo from "./src/assets/logo-cdhu-150px.png"
 
 export const configDatas = {
-    GER: "2.11.02.00 - GER DE SERVICE DESK, INFRAESTR E SEG DA INFORMACAO",
-    LOGO: logo
+  GER: "2.11.02.00 - GER DE SERVICE DESK, INFRAESTR E SEG DA INFORMACAO",
+  LOGO: logo,
+  BLOCKS: [
+    "Bloco 01",
+    "Bloco 02",
+    "Bloco 03",
+    "Bloco 04",
+    "Bloco 05",
+    "Bloco 06",
+  ],
+  LOCALITY: [
+    "Sede",
+    "Santos",
+    "Cidade IV",
+    "Campinas",
+    "Sorocaba",
+    "Araçatuba",
+    "Araraquara",
+    "Santo André",
+    "Ribeirão Preto",
+    "XV de Novembro",
+    "Presidente Prudente",
+    "São José dos Campos",
+    "São José do Rio Preto",
+  ],
+  FLOORS:[
+      "1º andar",
+      "2º andar",
+      "3º andar",
+      "4º andar",
+      "5º andar",
+      "6º andar",
+      "7º andar",
+      "8º andar",
+      "9º andar",
+      "10º andar",
+      "11º andar",
+      "12º andar",
+      "13º andar",
+      "14º andar",
+      "15º andar",
+      "16º andar",
+      "1º Subsolo",
+      "2º Subsolo",
+      "3º Subsolo",
+      "4º Subsolo",
+      "5º Subsolo",
+      "6º Subsolo",
+    "Intermediário/mezanino",
+  ]
 }
